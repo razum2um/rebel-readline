@@ -9,7 +9,7 @@
         :url "https://github.com/bhauman/rebel-readline"
         :dir ".."}
 
-  :dependencies [[org.clojure/clojure "1.8.0"]
+  :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.jline/jline-reader "3.5.1"]
                  [org.jline/jline-terminal "3.5.1"]
                  [org.jline/jline-terminal-jansi "3.5.1"]
