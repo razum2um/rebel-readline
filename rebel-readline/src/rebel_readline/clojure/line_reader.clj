@@ -765,6 +765,18 @@
    (cursor 0)
    true))
 
+(def backward-delete-char
+  (create-widget
+   (backspace)
+   (loop [chr (prev-char)
+          removed-newline false]
+     (if (Character/isWhitespace chr)
+       (do (backspace)
+           (recur (prev-char) (or removed-newline (= chr \newline))))
+       (when (and removed-newline (not (#{\) \] \}} (curr-char))))
+         (write " "))))
+   true))
+
 ;; --------------------------------------------
 ;; Base Widget registration and binding helpers
 ;; --------------------------------------------
@@ -782,7 +794,9 @@
     (register-widget "clojure-force-accept-line"  always-accept-line)
 
     (register-widget "end-of-buffer"              end-of-buffer)
-    (register-widget "beginning-of-buffer"        beginning-of-buffer)))
+    (register-widget "beginning-of-buffer"        beginning-of-buffer)
+
+    (register-widget "backward-delete-char"       backward-delete-char)))
 
 (defn bind-indents [km-name]
   (doto km-name
