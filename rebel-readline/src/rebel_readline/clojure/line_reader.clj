@@ -781,6 +781,17 @@
 ;; Base Widget registration and binding helpers
 ;; --------------------------------------------
 
+(comment
+  ;; Discover proper key codes entering "C-v" and shorcut in termnl
+  ;; Get proper widget name to redefine with a function
+  (defn unescape [s] (try (clojure.edn/read-string s) (catch Exception _ s)))
+  (-> rebel-readline.jline-api/*line-reader* .getKeyMaps
+      (get (-> rebel-readline.jline-api/*line-reader* .getKeyMap))
+      rebel-readline.jline-api/key-map->clj
+      (->> (map (fn [[k v]] [(unescape (org.jline.keymap.KeyMap/display k)) (.name v)])))
+      clojure.pprint/pprint)
+)
+
 (defn add-all-widgets [line-reader]
   (binding [*line-reader* line-reader]
     (register-widget "clojure-indent-line"        indent-line-widget)
