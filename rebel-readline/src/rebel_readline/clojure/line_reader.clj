@@ -707,7 +707,7 @@
         (evaluate-str form-str)))))
 
 (defn inline-result-marker [^AttributedString at-str]
-  (astring/astr ["#_=>" (color :widget/half-contrast-inverse)] " " at-str))
+  (astring/astr ["    " (color :widget/half-contrast-inverse)] " " at-str))
 
 (defn limit-character-size [s]
   (let [{:keys [rows cols]} (terminal-size)
@@ -1073,7 +1073,7 @@
     (.setOpt LineReader$Option/DISABLE_EVENT_EXPANSION)
         ;; never insert tabs
     (.unsetOpt LineReader$Option/INSERT_TAB)
-    (.setVariable LineReader/SECONDARY_PROMPT_PATTERN "%P #_=> ")
+    (.setVariable LineReader/SECONDARY_PROMPT_PATTERN "%P      ")
     ;; history
     (.setVariable LineReader/HISTORY_FILE (str (io/file ".rebel_readline_history")))
     (.setOpt LineReader$Option/HISTORY_REDUCE_BLANKS)
