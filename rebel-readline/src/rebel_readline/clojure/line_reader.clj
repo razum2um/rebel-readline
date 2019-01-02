@@ -427,6 +427,7 @@
 ;; -----------------------------------------
 
 (defn indent-proxy-str [s cursor]
+  (println (pr-str {:indent-proxy-str {:s s :cursor cursor}}))
   (let [tagged-parses (tokenize/tag-sexp-traversal s)]
     ;; never indent in quotes
     ;; this is an optimization, the code should work fine without this
@@ -1039,7 +1040,7 @@
               (cljs-quit-complete (meta line))
               (completions (.word line) options))
              (map #(candidate %))
-             (take 10)
+             (take 30)
              (.addAll candidates))))))))
 
 ;; ----------------------------------------
