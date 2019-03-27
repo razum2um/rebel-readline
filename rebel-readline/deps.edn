@@ -1,4 +1,4 @@
-{:deps {org.clojure/clojure {:mvn/version "1.8.0"}
+{:deps {org.clojure/clojure {:mvn/version "1.10.0"}
         org.jline/jline-reader {:mvn/version "3.5.1"}
         org.jline/jline-terminal {:mvn/version "3.5.1"}
         org.jline/jline-terminal-jansi {:mvn/version "3.5.1"}
