@@ -13,7 +13,7 @@
                  [org.jline/jline-reader "3.5.1"]
                  [org.jline/jline-terminal "3.5.1"]
                  [org.jline/jline-terminal-jansi "3.5.1"]
-                 [cljfmt "0.5.7"]     ;; depends on tools reader
+                 [cljfmt "0.6.4"]     ;; depends on tools reader
                  [compliment "0.3.6"]]
 
   :profiles {:dev {:source-paths ["src" "dev"]
